@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>BirthdayCard</title>
+       <script type="text/javascript">
+            var id = 0;
+            var h=0;
+            var m=0;
+            var s=0;
+            function set() {
+            h = document.getElementById("hour").value;
+            m = document.getElementById("min").value;
+            s = document.getElementById("sec").value;
+            document.getElementById("txt").innerHTML=h+":"+m+":"+s;
+            }
+            function display() {
+            document.getElementById("txt").innerHTML=h+":"+m+":"+s;
+            if(s<59) s++;
+            else {
+                if(m<59) {m++; s=0;}
+                else {
+                    if(h<23) {h++; m=0; s=0;}
+                    else {h=0; m=0; s=0;}
+                }
+            }
+            }
+            function start() {
+                id=window.setInterval(display, 1000);
+            }
+            function stop() {
+                window.clearTimeout(id);
+            }
+
+       </script>
+        
+    </head>
+    <body>
+        <h1>24-hours format Digital Clock</h1>
+        <br><br>
+        <input type = "number" id="hour" placeholder="Enter Hours"/>
+        <input type="number" id="min" placeholder="Enter Miniutes"/>
+        <input type="number" id="sec" placeholder="Enter Seconds"/>
+        <br><br>
+        <button id="btnSet" onClick="set()">Set the Time</button>
+        <br><br>
+        <button id="btnStrt" onclick="start()">Start</button>
+        <h2 id="txt">0:0:0</h2>
+        <br>
+        <button id="btnStp" onclick="stop()" type="button">Stop</button>    
+
+    </body>
+       
+</html>
